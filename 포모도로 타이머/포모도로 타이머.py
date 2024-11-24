@@ -29,13 +29,15 @@ def start_pomodoro():
     # 30분 집중 타이머
     countdown(30, "집중 중")
     if not stop_requested:
+        count += 1  # 집중 타이머 완료 시 카운트 증가
+        count_label.config(text=f"오늘 진행한 횟수: {count}")  # 카운트 업데이트
+
+    if not stop_requested:
         # 10분 휴식 타이머
         countdown(10, "휴식 중")
     if not stop_requested:
         timer_label.config(text="타이머 완료!")
-        current_status.config(text="완료")  # 상태 업데이트
-        count += 1  # 타이머 완료 횟수 증가
-        count_label.config(text=f"오늘 진행한 횟수: {count}")
+        current_status.config(text="완료")  
 
     timer_running = False
 
